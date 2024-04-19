@@ -16,7 +16,7 @@
           <div class="d-flex fill-height justify-center align-center">
             <div class="text-h2" style="background-color: #02040e;border-radius: 12px;">   
             <v-img
-                style="width: 500px;height: 400px;object-fit: scale-down;background-color: #02040e;"
+                style="width: 700px;height: 600px;object-fit: scale-down;background-color: #02040e;"
                 
                 :src="photo"
             ></v-img>

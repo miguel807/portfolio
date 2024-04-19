@@ -87,7 +87,7 @@ const items = [
         title:"Tic Tac Toe Game",
         description:"Este juego está desarrollado el fronted y el backend, aplicando websocket para lograr una comunicacion en tiempo real y una mejor experiencia de usuario",
         develop:["Vue3","Quasar",".NetCore","Microservices","SignalR","RabbitMq","CQRS"],
-        img:["https://cdn.vuetifyjs.com/images/cards/sunshine.jpg","https://cdn.vuetifyjs.com/images/parallax/material.jpg","https://picsum.photos/500/300?image=232"],
+        img:["src/assets/tic1.png","src/assets/tic2.png","src/assets/tic3.png","src/assets/tic4.png","src/assets/tic5.png"],
         color:"teal",
         link:"https://www.youtube.com/watch?v=HEMvsJTBweY&t=3378s",
     },
@@ -95,7 +95,7 @@ const items = [
         title:"Api de gestion de restaurantes",
         description:" Una api implementada para algunas de las funcionalidades de un restaurante",
         develop:["Nestjs","Microservices","Redis","RabbitMq"],
-        img:["https://cdn.vuetifyjs.com/images/parallax/material.jpg","https://picsum.photos/500/300?image=232","https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"],
+        img:["src/assets/codeApi.webp"],
         color:"indigo",
         link:"https://www.youtube.com/watch?v=HEMvsJTBweY&t=3378s"
     },
@@ -103,7 +103,7 @@ const items = [
         title:"Menu dinámico ",
         description:" Un proyecto para lograr la gestion completa de menú generado a traves de un Qr, implementando varias funcionalidades",
         develop:["Vue3","Quasar","Nestjs","Hexagonal Arquitecture"],
-        img:["https://cdn.vuetifyjs.com/images/cards/sunshine.jpg","https://cdn.vuetifyjs.com/images/cards/sunshine.jpg","https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"],
+        img:["src/assets/menu11.png","src/assets/menu12.png","src/assets/menu13.png","src/assets/menu14.png",],
         color:"red-accent-4",
         link:"https://www.youtube.com/watch?v=HEMvsJTBweY&t=3378s"
     },
@@ -111,7 +111,7 @@ const items = [
         title:"Screen View Reescrining",
         description:"Sitio Web para empresa de restaurancion de piscinas",
         develop:["Html5","Css","Javascript"],
-        img:["https://cdn.vuetifyjs.com/images/cards/sunshine.jpg","https://cdn.vuetifyjs.com/images/cards/sunshine.jpg","https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"],
+        img:["src/assets/pool1.png","src/assets/pool2.png","src/assets/pool3.png",],
         color:"blue",
         link:"https://www.youtube.com/watch?v=HEMvsJTBweY&t=3378s"
     },
