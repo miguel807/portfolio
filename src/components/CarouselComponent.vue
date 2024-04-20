@@ -19,7 +19,20 @@
                 style="width: 700px;height: 600px;object-fit: scale-down;background-color: #02040e;"
                 
                 :src="photo"
-            ></v-img>
+            >
+            <template v-slot:placeholder>
+              <v-row
+                align="center"
+                class="fill-height ma-0"
+                justify="center"
+              >
+                <v-progress-circular
+                  color="grey-lighten-5"
+                  indeterminate
+                ></v-progress-circular>
+              </v-row>
+        </template>
+          </v-img>
             </div>
           </div>
         </v-sheet>

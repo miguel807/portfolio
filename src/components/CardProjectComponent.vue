@@ -25,10 +25,22 @@
                 <div class="inside-picture">
                     <span >See more <v-icon icon="mdi-eye" size="x-small"></v-icon></span>
                 </div>
-            </v-img>
-            </v-card>
-          
-        </template>
+                <template v-slot:placeholder>
+                    <v-row
+                        align="center"
+                        class="fill-height ma-0"
+                        justify="center"
+                    >
+                        <v-progress-circular
+                        color="grey-lighten-5"
+                        indeterminate
+                        ></v-progress-circular>
+                    </v-row>
+                    </template>
+                        </v-img>
+                        </v-card>
+        
+                </template>
         <div>
           <v-alert class="text-h6 title"  :color="item.color">{{ item.title }}  <v-icon
                 style="color: white;font-size: 20px;cursor: pointer;"
