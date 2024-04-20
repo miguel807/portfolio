@@ -104,14 +104,14 @@ const submitForm = async ()=> {
                </v-btn>
 
                 <v-btn class="btn">
-                  <a href="/Miguel Fernández PérezCV.pdf" download style="text-decoration: none;color: white;">
+                  <a href="/Miguel Fernández Pérez ECV.pdf" download style="text-decoration: none;color: white;">
                       CV (en) <v-icon
                     style="color: white;font-size: 20px;"
                     icon="mdi-file-document-outline"  
                    ></v-icon>
                 </a></v-btn>
                 <v-btn class="btn">
-                  <a href="/Miguel Fernández PérezCV.pdf" download style="text-decoration: none;color: white;">
+                  <a href="/Miguel Fernández Pérez CV.pdf" download style="text-decoration: none;color: white;">
                   CV (es) <v-icon
                 style="color: white;font-size: 20px;"
                 icon="mdi-file-document-outline"
