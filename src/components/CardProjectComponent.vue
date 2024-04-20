@@ -42,12 +42,12 @@
         
                 </template>
         <div>
-          <v-alert class="text-h6 title"  :color="item.color">{{ item.title }}  <v-icon
+          <v-alert class="text-h6 title"  :color="item.color">{{ item.title }} <a v-bind:href="item.link" target="_blank" style="text-decoration: none;">  <v-icon
                 style="color: white;font-size: 20px;cursor: pointer;"
                 
                 icon="mdi-github"
                 end
-              ></v-icon></v-alert>
+              ></v-icon></a></v-alert>
           <p class="description" >
              {{ item.description }}
           </p>
@@ -64,12 +64,12 @@
       </v-timeline-item>
     <v-timeline-item fill-dot>
         <template v-slot:opposite>
-            <h1 style="color: white;margin: auto;">And more...  <v-icon
+            <h1 style="color: white;margin: auto;">And more... <a href="https://github.com/miguel807/" target="_blank" style="text-decoration: none;"> <v-icon
                 style="color: white;font-size: 30px;cursor: pointer;"
                 
                 icon="mdi-github"
                 end
-              ></v-icon></h1>
+              ></v-icon> </a></h1>
         </template>
       
             </v-timeline-item>
@@ -97,31 +97,31 @@ function openDialog(photos) {
 const items = [
     {
         title:"Tic Tac Toe Game",
-        description:"Este juego está desarrollado el fronted y el backend, aplicando websocket para lograr una comunicacion en tiempo real y una mejor experiencia de usuario",
+        description:"This game is developed with both frontend and backend, applying websocket to achieve real-time communication and a better user experience.",
         develop:["Vue3","Quasar",".NetCore","Microservices","SignalR","RabbitMq","CQRS"],
         img:["/tic1.png","/tic2.png","/tic3.png","/tic4.png","/tic5.png"],
         color:"teal",
-        link:"https://www.youtube.com/watch?v=HEMvsJTBweY&t=3378s",
+        link:"https://github.com/miguel807/ticTacToeApi",
     },
     {
-        title:"Api de gestion de restaurantes",
-        description:" Una api implementada para algunas de las funcionalidades de un restaurante",
+        title:"Restaurant Management API",
+        description:"An API implemented for some of the functionalities of a restaurant.",
         develop:["Nestjs","Microservices","Redis","RabbitMq"],
         img:["/codeApi.webp"],
         color:"indigo",
         link:"https://www.youtube.com/watch?v=HEMvsJTBweY&t=3378s"
     },
     {
-        title:"Menu dinámico ",
-        description:" Un proyecto para lograr la gestion completa de menú generado a traves de un Qr, implementando varias funcionalidades",
+        title:"Dynamic Menu",
+        description:"A project to achieve complete management of a menu generated through a QR code, implementing its functionalities.",
         develop:["Vue3","Quasar","Nestjs","Hexagonal Arquitecture"],
         img:["/menu11.png","/menu12.png","/menu13.png","/menu14.png",],
         color:"red-accent-4",
-        link:"https://www.youtube.com/watch?v=HEMvsJTBweY&t=3378s"
+        link:"https://github.com/miguel807/Alinas/tree/master"
     },
     {
-        title:"Screen View Reescrining",
-        description:"Sitio Web para empresa de restaurancion de piscinas",
+        title:"Screen View Rescreening",
+        description:"Website for a company responsible for maintenance and repair tasks.",
         develop:["Html5","Css","Javascript"],
         img:["/pool1.png","/pool2.png","/pool3.png",],
         color:"blue",

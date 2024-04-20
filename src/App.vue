@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { Ref, ref } from 'vue';
 import TimelineComponent from './components/TimelineComponent.vue';
 import CardProjectComponent from './components/CardProjectComponent.vue';
 
@@ -20,9 +20,45 @@ const scrollToContact = () => {
 };
 
 
-const firstName = ref('')
-const email = ref('')
-const phone = ref("")
+const firstName:Ref<string> = ref('')
+const email:Ref<string> = ref('')
+const phone:Ref<string> = ref("")
+const content:Ref<string> = ref("");
+const showSnackbar:Ref<boolean> = ref(false);
+const showErrorSnackbar:Ref<boolean> = ref(false);
+
+const submitForm = async ()=> {
+
+      if(firstName.value!="" && email.value!=""&&content.value!="" ){
+      const formData = new FormData();
+      formData.append('firstName', firstName.value);
+      formData.append('email', email.value);
+      formData.append('phone',phone.value);
+      formData.append('phone',content.value);
+      formData.append('_captcha', 'false');
+
+      const response = await fetch(
+        'https://formsubmit.co/miguelfernandezperez69@gmail.com',
+        {
+          method: 'POST',
+          body: formData,
+        }
+      );
+
+      if (response.ok) {
+        // Aquí puedes manejar lo que sucede después de enviar el formulario.
+        // Por ejemplo, puedes mostrar un mensaje de éxito.
+       
+        showSnackbar.value = true
+      } else {
+        // Aquí puedes manejar los errores.
+        console.log("there was an error")
+      }
+    }else{
+      showErrorSnackbar.value = true
+    }
+    }
+
 
 </script>
 
@@ -57,21 +93,31 @@ const phone = ref("")
              
             </div>
               <div class="btn-section">
-                <v-btn class="btn">GitHub <v-icon
-                style="color: white;font-size: 20px;"
-                icon="mdi-github"
-                end
-              ></v-icon></v-btn>
-                <v-btn class="btn">CV (en) <v-icon
+                <v-btn class="btn">
+                  <a href="https://github.com/miguel807/" target="_blank" style="text-decoration: none; color: white;">
+                      GitHub <v-icon
+                    style="color: white;font-size: 20px;"
+                    icon="mdi-github"
+                    end
+                    ></v-icon>
+                  </a>
+               </v-btn>
+
+                <v-btn class="btn">
+                  <a href="/Miguel Fernández PérezCV.pdf" download style="text-decoration: none;color: white;">
+                      CV (en) <v-icon
+                    style="color: white;font-size: 20px;"
+                    icon="mdi-file-document-outline"  
+                   ></v-icon>
+                </a></v-btn>
+                <v-btn class="btn">
+                  <a href="/Miguel Fernández PérezCV.pdf" download style="text-decoration: none;color: white;">
+                  CV (es) <v-icon
                 style="color: white;font-size: 20px;"
                 icon="mdi-file-document-outline"
                 
-              ></v-icon></v-btn>
-                <v-btn class="btn">CV (es) <v-icon
-                style="color: white;font-size: 20px;"
-                icon="mdi-file-document-outline"
-                
-              ></v-icon></v-btn>  
+              ></v-icon>
+            </a></v-btn>  
               </div>
           
           </div>
@@ -100,16 +146,22 @@ const phone = ref("")
               ></v-icon> Contact</h2>
               
              <div class="form">
+              <form  @submit.prevent="submitForm">
+                <input
+                class="inputForm"
+                type="hidden" name="_captcha" value="false"
+                 
+                >
                 <v-text-field
                 class="inputForm"
                   v-model="firstName"
-                  label="Name"
+                  label="Name *"
                   variant="underlined"
                 ></v-text-field>
                 <v-text-field
                 class="inputForm"
                   v-model="email"
-                  label="Email"
+                  label="Email *"
                   variant="underlined"
                 ></v-text-field>
                 <v-text-field
@@ -119,12 +171,38 @@ const phone = ref("")
                   variant="underlined"
                   
                 ></v-text-field>
-                <v-btn class="mt-2 btn-submit" style="background-color: transparent;"  type="submit" block >Submit  <v-icon
-          icon="mdi-send"
-          end
-          class="icon-send"
-          style="color: red;"
-        ></v-icon></v-btn>
+                <v-textarea variant="underlined" label ="Content *" class="inputForm" rows="1"  v-model="content">
+
+                </v-textarea>
+                <v-btn class="mt-2 btn-submit"   style="background-color: transparent;"  type="submit" block >Submit  <v-icon
+                icon="mdi-send"
+                end
+                class="icon-send"
+                style="color: red;"
+              ></v-icon></v-btn>
+              <v-snackbar
+                 v-model="showSnackbar"
+                  :timeout="2000"
+                  color="teal-darken-4"
+                  elevation="24"
+                  style="font-weight: bold;  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"
+                >
+                <div class="text-center">
+                <strong>Email sent successfully</strong>.
+              </div>
+                </v-snackbar>
+                <v-snackbar
+                 v-model="showErrorSnackbar"
+                  :timeout="2000"
+                  color="red-accent-4"
+                  elevation="24"
+                  style="font-weight: bold; border-radius: 20px  ;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"
+                >
+                <div class="text-center">
+                <strong>Todos los campos deben llenarse</strong>.
+              </div>
+                </v-snackbar>
+         </form>
               </div>
              </div>
         </div>
@@ -278,7 +356,7 @@ const phone = ref("")
 .experienceSection{
   width: 100%;
   height: max-content;
-  margin-top:60%
+  margin-top:62%
 }
 .experienceSection >h2{
   margin-bottom: 60px;
@@ -309,7 +387,7 @@ const phone = ref("")
   width: 100%;
   height: 400px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
- 
+
 }
 
 .form{
@@ -320,6 +398,7 @@ const phone = ref("")
   box-shadow: 1px 1px 1px 1px rgba(102, 100, 100, 0.164);
   padding: 20px;
   border-radius: 18px;
+ 
 }
 .inputForm{
   border-radius: 25px;
