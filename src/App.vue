@@ -41,6 +41,7 @@ const submitForm = async ()=> {
         'https://formsubmit.co/miguelfernandezperez69@gmail.com',
         {
           method: 'POST',
+          mode:'no-cors',
           body: formData,
         }
       );
