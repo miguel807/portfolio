@@ -34,14 +34,13 @@ const submitForm = async ()=> {
       formData.append('firstName', firstName.value);
       formData.append('email', email.value);
       formData.append('phone',phone.value);
-      formData.append('phone',content.value);
+      formData.append('content',content.value);
       formData.append('_captcha', 'false');
 
       const response = await fetch(
         'https://formsubmit.co/miguelfernandezperez69@gmail.com',
         {
           method: 'POST',
-          mode:'no-cors',
           body: formData,
         }
       );
@@ -200,7 +199,7 @@ const submitForm = async ()=> {
                   style="font-weight: bold; border-radius: 20px  ;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"
                 >
                 <div class="text-center">
-                <strong>Todos los campos deben llenarse</strong>.
+                <strong>All fields must be filled</strong>.
               </div>
                 </v-snackbar>
          </form>
