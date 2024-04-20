@@ -109,7 +109,7 @@ const items = [
         develop:["Nestjs","Microservices","Redis","RabbitMq"],
         img:["/codeApi.webp"],
         color:"indigo",
-        link:"https://www.youtube.com/watch?v=HEMvsJTBweY&t=3378s"
+        link:""
     },
     {
         title:"Dynamic Menu",
@@ -125,7 +125,7 @@ const items = [
         develop:["Html5","Css","Javascript"],
         img:["/pool1.png","/pool2.png","/pool3.png",],
         color:"blue",
-        link:"https://www.youtube.com/watch?v=HEMvsJTBweY&t=3378s"
+        link:"https://github.com/miguel807/clearViewRes"
     },
 ]
 </script>
