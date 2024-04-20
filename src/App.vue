@@ -385,7 +385,8 @@ const submitForm = async ()=> {
   color: white;
   font-size: 20px;
   width: 100%;
-  height: 400px;
+  height: max-content;
+  padding-bottom: 50px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }

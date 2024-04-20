@@ -13,7 +13,7 @@
        <CarouselComponent :photos = "currentPhotos" />
     </v-dialog>
         <template v-slot:opposite >
-            <v-card  :color ="item.color"  style="margin-bottom: 100px;">
+            <v-card  :color ="item.color"  style="margin-bottom: 100px;" >
             <v-img
                
                 height="200px"
@@ -173,12 +173,12 @@ const items = [
 .inside-picture:hover{
     color: white;
     background-color: #02040e8f;
-    animation: moveRigth 1.5s normal;
+    animation: moveRigth 1s normal;
 }
 @keyframes moveRigth {
-    0% { transform: translateX(-50px); }
-    50% { transform: translateX(30px); }
-    100% { transform: translateX(0px); }
+    0% { transform: translateY(-5px); }
+    50% { transform: translateY(5px); }
+    100% { transform: translateY(0px); }
 }
 
 
