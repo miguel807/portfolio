@@ -218,7 +218,7 @@ const items = [
 .description{
     margin-top: 20px;
     
-    font-size: 15px;
+    font-size: 18px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-left: 10px;
     margin-right: 10px;
@@ -226,7 +226,7 @@ const items = [
 }
 
 .develop{
-    font-size: 15px;
+    font-size: 17px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-right: 10px;
     

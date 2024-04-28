@@ -65,7 +65,7 @@ const items =  [
 }
 
 .section-description{
-  font-size: 15px;font-weight: lighter;
+  font-size: 17px;font-weight: lighter;color: white;
 }
 
 @media (max-width: 750px) {

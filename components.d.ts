@@ -12,6 +12,7 @@ declare module 'vue' {
     CarouselComponent: typeof import('./src/components/CarouselComponent.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     SnackBar: typeof import('./src/components/SnackBar.vue')['default']
+    StackComponent: typeof import('./src/components/StackComponent.vue')['default']
     TimelineComponent: typeof import('./src/components/TimelineComponent.vue')['default']
   }
 }

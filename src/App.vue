@@ -141,6 +141,7 @@ const submitForm = async ()=> {
                     <CardProjectComponent  />
             </div>
            
+           
             <div  ref="contactSection" class="contact" >
 
                <h2>  
