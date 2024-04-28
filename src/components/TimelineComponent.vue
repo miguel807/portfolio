@@ -1,5 +1,5 @@
 <template>
-    <v-timeline side="end" >
+    <v-timeline side="end"  class="work">
       <v-timeline-item
         v-for="item in items"
         :key="item.id"
@@ -14,10 +14,10 @@
           style="border-radius: 9px;"
           :value="true"
         >
-          <div>
-            <span style="color: red;margin-right: 10px;">{{ item.date }}</span>
-            <span style="font-size: 12px;">{{ item.title }}</span> <br><br>
-            <h3 style="font-size: 15px;font-weight: lighter;">{{ item.description }}</h3>
+          <div class="section">
+            <span class="section-date" >{{ item.date }}</span>
+            <span class="section-title">{{ item.title }}</span> <br><br>
+            <h3   class="section-description" >{{ item.description }}</h3>
           </div>
         </v-alert>
       </v-timeline-item >
@@ -56,4 +56,37 @@ const items =  [
 .dot{
   cursor: pointer;
 }
+.section-date{
+  color: red;
+  margin-right: 10px;
+}
+.section-title{
+  font-size: 12px
+}
+
+.section-description{
+  font-size: 15px;font-weight: lighter;
+}
+
+@media (max-width: 750px) {
+  .work{
+    margin-right: 20px;
+    
+  }
+  .section-date{
+  color: red;
+  margin-right: 13px;
+  font-size: 18px;
+}
+.section-title{
+  font-size: 18px
+}
+
+.section-description{
+  font-size: 18px;font-weight: lighter;
+}
+
+
+}
+
 </style>

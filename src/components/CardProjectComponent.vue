@@ -1,5 +1,5 @@
 <template>
-    <v-timeline align="start">
+    <v-timeline align="start" class="show-on-small ">
         <v-timeline-item 
             v-for="item in items" :key="item"
             :dot-color="item.color"
@@ -18,7 +18,7 @@
                
                 height="200px"
                 :src= item.img[0]
-                style="width:250px;border-radius:12px;cursor: pointer;"
+                style="width:300px;border-radius:12px;cursor: pointer;"
                 cover
                 @click="openDialog(item.img)"
                 >
@@ -74,6 +74,78 @@
       
             </v-timeline-item>
     </v-timeline>
+
+    <!--esto es en el responsive-->
+
+    <v-timeline side="end" class="hide-on-small" style="margin-right: 20px;">
+      <v-timeline-item
+      v-for="item in items" :key="item"
+            :dot-color="item.color"
+        fill-dot
+        size="small"
+        
+        
+      >
+        <v-alert
+          color="transparent"
+          style="border-radius: 9px;"
+          :value="true"
+        >
+          <div>
+            <v-card  :style="{ 'margin-bottom': '20px', 'background-color': 'transparent', 'border': `1px solid ${item.colorHex}`, 'border-radius': '9px' }">
+                <v-alert class="title"  :color="item.color" style="border-radius:9px 9px 0px 0px;font-size: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" >{{ item.title }}  <a v-bind:href="item.link" target="_blank" style="text-decoration: none;">  <v-icon
+                style="color: white;font-size: 25px;cursor: pointer;"
+                
+                icon="mdi-github"
+                end
+              ></v-icon></a></v-alert>
+            <v-img
+               
+                height="250px"
+                :src= item.img[0]
+                style="width:100%;border-radius:0px;cursor: pointer;background-color: transparent;"
+                cover
+                @click="openDialog(item.img)"
+                >
+                <div class="inside-picture">
+                    <span >See more <v-icon icon="mdi-eye" size="x-small"></v-icon></span>
+                </div>
+                <template v-slot:placeholder>
+                    <v-row
+                        align="center"
+                        class="fill-height ma-0"
+                        justify="center"
+                    >
+                        <v-progress-circular
+                        color="grey-lighten-5"
+                        indeterminate
+                        ></v-progress-circular>
+                    </v-row>
+                    </template>
+                        </v-img>
+                        <div>
+         
+         <p class="description" style="margin-top: 20px;margin-left: 15px;margin-right: 15px; font-size: 23px;text-align: center;" >
+            {{ item.description }}
+         </p>
+         <br>
+         
+         <div style="width: 100%;display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;margin-left: 10px;padding: 5px;">
+           <em v-for="(dev, index) in item.develop" :key="dev" :class="`develop text-${colors[index]}`" style="font-size: 22px;;">
+                   {{ dev }}
+               </em>
+         </div>
+      
+         <br>
+        
+       </div>
+                </v-card>
+                       
+          </div>
+        </v-alert>
+      </v-timeline-item >
+    </v-timeline>
     
   </template>
 
@@ -102,6 +174,7 @@ const items = [
         img:["/tic1.png","/tic2.png","/tic3.png","/tic4.png","/tic5.png"],
         color:"teal",
         link:"https://github.com/miguel807/ticTacToeApi",
+        colorHex:"#009688"
     },
     {
         title:"Restaurant Management API",
@@ -109,7 +182,8 @@ const items = [
         develop:["Nestjs","Microservices","Redis","RabbitMq"],
         img:["/codeApi.webp"],
         color:"indigo",
-        link:""
+        link:"",
+        colorHex:"#3F51B5"
     },
     {
         title:"Dynamic Menu",
@@ -117,7 +191,8 @@ const items = [
         develop:["Vue3","Quasar","Nestjs","Hexagonal Arquitecture"],
         img:["/menu11.png","/menu12.png","/menu13.png","/menu14.png",],
         color:"red-accent-4",
-        link:"https://github.com/miguel807/Alinas/tree/master"
+        link:"https://github.com/miguel807/Alinas/tree/master",
+        colorHex:"#D50000"
     },
     {
         title:"Screen View Rescreening",
@@ -125,7 +200,8 @@ const items = [
         develop:["Html5","Css","Javascript"],
         img:["/pool1.png","/pool2.png","/pool3.png",],
         color:"blue",
-        link:"https://github.com/miguel807/clearViewRes"
+        link:"https://github.com/miguel807/clearViewRes",
+        colorHex:"#2196F3"
     },
 ]
 </script>
@@ -141,9 +217,11 @@ const items = [
 
 .description{
     margin-top: 20px;
+    
     font-size: 15px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-left: 10px;
+    margin-right: 10px;
      
 }
 
@@ -182,4 +260,15 @@ const items = [
 }
 
 
+/* styles.css */
+@media (min-width: 750px) {
+  .hide-on-small {
+    display: none;
+  }
+}
+@media (max-width: 750px) {
+  .show-on-small {
+    display: none;
+  }
+}
 </style>

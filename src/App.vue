@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Ref, ref } from 'vue';
+import { onMounted, Ref, ref } from 'vue';
 import TimelineComponent from './components/TimelineComponent.vue';
 import CardProjectComponent from './components/CardProjectComponent.vue';
 
@@ -7,6 +7,11 @@ import CardProjectComponent from './components/CardProjectComponent.vue';
 const experienceSection = ref(null);
 const projectSection = ref(null);
 const contactSection = ref(null);
+const heightScreen = ref(0)
+onMounted(()=>{
+  heightScreen.value = window.innerHeight;
+  console.log(heightScreen.value)
+})
 const scrollToExperience = () => {
   experienceSection.value.scrollIntoView({ behavior: 'smooth' });
 };
@@ -125,14 +130,14 @@ const submitForm = async ()=> {
         
         <div ref="experienceSection" class="experienceSection " >
           
-            <h2> <v-icon
+            <h2 class="workExperienceMovile"> <v-icon
              style="color: rgb(255, 0, 0);font-size: 25px;"
              icon="mdi-laptop"
       
             ></v-icon> Work Experience</h2>
                 <TimelineComponent/>
             <div ref="projectSection" class="projects">
-                <h2><span style="color: rgb(255, 0, 0);"> &lt;/&gt;</span> Projects</h2>
+                <h2 class="projectSectionMovile"><span style="color: rgb(255, 0, 0);"> &lt;/&gt;</span> Projects</h2>
                     <CardProjectComponent  />
             </div>
            
@@ -209,7 +214,7 @@ const submitForm = async ()=> {
         
         </div>
         
-        <button class="btn-down" @click="scrollToExperience" >&UpArrow;</button>
+        <button class="btn-down" :style="{ top: `${heightScreen - 20}px` }"  @click="scrollToExperience">&UpArrow;</button>
 
       </v-app>
 
@@ -272,9 +277,9 @@ const submitForm = async ()=> {
   align-items: start;
   justify-content: center;
   width: 80%;
-  
   margin: auto;
   padding-left:45px;
+  height: 400px;
 }
 .presentation > h1{
   color: beige;
@@ -356,7 +361,7 @@ const submitForm = async ()=> {
 .experienceSection{
   width: 100%;
   height: max-content;
-  margin-top:62%
+  margin-top:70%
 }
 .experienceSection >h2{
   margin-bottom: 60px;
@@ -474,4 +479,36 @@ const submitForm = async ()=> {
   inherits: true;
   initial-value: 0turn;
 }
+
+@media (max-width: 750px) {
+  .contact>h2{
+    margin-left: 20px;
+  }
+  .workExperienceMovile{
+    margin-left: 22px;
+    font-size: 35px;
+  }
+  .projectSectionMovile{
+    margin-left: 20px;
+    font-size: 35px;
+  }
+  .form{
+    width: 84%;
+  }
+  .presentation{
+    padding-right:20px ;  
+    position: relative;
+  
+    height: 100vh;
+    top: -120px;
+    
+  }
+  .container{
+  
+    height: 100vh;
+  }
+}
+
+
+
 </style>

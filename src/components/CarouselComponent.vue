@@ -14,10 +14,9 @@
           style="height: max-content;width: max-content;border-radius: 12px;"
         >
           <div class="d-flex fill-height justify-center align-center">
-            <div class="text-h2" style="background-color: #02040e;border-radius: 12px;">   
+            <div class="text-h2" style="background-color: #02040e;border-radius: 12px;" >   
             <v-img
-                style="width: 700px;height: 600px;object-fit: scale-down;background-color: #02040e;"
-                
+                class="imgCarousel"
                 :src="photo"
             >
             <template v-slot:placeholder>
@@ -49,8 +48,25 @@ const props = defineProps({
     required: true
   }
 })
-console.log(props.photos)
+
 
 </script>
 <style scoped> 
+
+.imgCarousel{
+
+  object-fit: scale-down;
+  background-color: #02040e;
+  width: 700px;
+  height: 600px;
+}
+
+@media (max-width: 750px) {
+.imgCarousel{
+  width: 300px;
+  height: 250px;
+  object-fit: contain;  
+
+}
+}
 </style>
