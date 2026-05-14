@@ -11,9 +11,8 @@ const loading = ref(true);
 onMounted(() => {
   setTimeout(() => {
     loading.value = false;
-  }, 2000);
+  }, 800);
   heightScreen.value = window.innerHeight;
-  console.log(heightScreen.value);
 });
 const scrollToExperience = () => {
   experienceSection.value.scrollIntoView({ behavior: "smooth" });
@@ -271,7 +270,7 @@ const submitForm = async () => {
   height: 50px;
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 20px;
   color: white;
   font-weight: bold;
   font-size: small;
@@ -533,29 +532,37 @@ const submitForm = async () => {
 }
 
 @media (max-width: 750px) {
+  .nav-bar {
+    gap: 15px;
+    font-size: 12px;
+  }
   .contact > h2 {
-    margin-left: 20px;
+    margin-left: 10px;
   }
-  .workExperienceMovile {
-    margin-left: 22px;
-    font-size: 35px;
-  }
-  .projectSectionMovile {
-    margin-left: 20px;
-    font-size: 35px;
+  .workExperienceMovile, .projectSectionMovile {
+    margin-left: 10px;
+    font-size: 28px !important;
   }
   .form {
-    width: 84%;
+    width: 95%;
+    padding: 15px;
   }
   .presentation {
-    padding-right: 20px;
-    position: relative;
-
-    height: 100vh;
-    top: -120px;
+    padding: 0 10px;
+    height: 85vh;
+    padding-top: 10vh;
+  }
+  .hero-top {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  .btn-section {
+    width: 100%;
+    justify-content: center;
   }
   .container {
-    height: 100vh;
+    width: 95%;
   }
 }
 </style>
