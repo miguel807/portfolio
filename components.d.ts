@@ -7,12 +7,8 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    ButtonAnimation: typeof import('./src/components/ButtonAnimation.vue')['default']
     CardProjectComponent: typeof import('./src/components/CardProjectComponent.vue')['default']
     CarouselComponent: typeof import('./src/components/CarouselComponent.vue')['default']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-    SnackBar: typeof import('./src/components/SnackBar.vue')['default']
-    StackComponent: typeof import('./src/components/StackComponent.vue')['default']
     TimelineComponent: typeof import('./src/components/TimelineComponent.vue')['default']
   }
 }

@@ -1,205 +1,164 @@
 <template>
-  <v-timeline side="end" class="work">
+  <v-timeline side="end" class="experience-timeline">
     <v-timeline-item
       v-for="item in items"
       :key="item.id"
-      :dot-color="item.color"
+      dot-color="#ff3c3c"
       fill-dot
       size="small"
     >
-      <v-alert
-        :color="item.background"
-        style="
-          border-radius: 12px;
-          background: linear-gradient(145deg, #121212, #1e1e2f);
-          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
-        "
-        :value="true"
-      >
-        <div class="section">
-          <span class="section-date">{{ item.date }}</span>
-          <span class="section-title">{{ item.title }}</span> <br /><br />
-          <h3 class="section-description">{{ item.description }}</h3>
-          <br />
-          <div
-            style="
-              width: 100%;
-              display: flex;
-              flex-direction: row;
-              flex-wrap: wrap;
-              justify-content: center;
-              margin-left: 10px;
-              padding-left: 15px;
-              padding-right: 15px;
-              column-gap: 12px;
-              row-gap: 4px;
-            "
-          >
-            <em
-              v-for="(data, index) in item.develop"
+      <v-card class="experience-card">
+        <div class="experience-content">
+          <div class="experience-header">
+            <span class="experience-date">{{ item.date }}</span>
+            <h3 class="experience-title">{{ item.title }}</h3>
+          </div>
+          
+          <p class="experience-description">{{ item.description }}</p>
+
+          <div class="experience-tech">
+            <span
+              v-for="(tech, index) in item.develop"
               :key="index"
-              :class="`develop text-${colors[index]}`"
-              style="font-size: 14px"
+              class="tech-tag"
             >
-              {{ data }}
-            </em>
+              {{ tech }}
+            </span>
           </div>
         </div>
-      </v-alert>
+      </v-card>
     </v-timeline-item>
   </v-timeline>
 </template>
+
 <script lang="ts" setup>
-const colors = [
-  "indigo",
-  "teal",
-  "red-accent-4",
-  "blue",
-  "green",
-  "deep-purple",
-  "pink",
-  "indigo",
-  "teal",
-  "red-accent-4",
-];
 const items = [
   {
     id: 1,
     color: "red-accent-4",
-    background: "#121212",
-    icon: "",
-    date: "02/2022 - 01/2025",
-    title: "Full Stack Developer - Geocuba ",
+    date: "05/2025 – Present",
+    title: "Fullstack Developer - Bicimex",
     description:
-      "I developed and implemented end-to-end solutions covering both frontend and backend. I implemented automated tests that improved the system's reliability and scalability, and resolved critical issues, reducing response times and enhancing user experience. Notable projects include the disaster management system (Fénix) and a platform for company personnel administration.",
+      "Internal Systems Architecture: Design and development of custom Add-ons for warehouse management, optimizing fulfillment speed and inventory movement. Process Automation: Implementation of purchasing automation flows using n8n, reducing manual errors. Microservices and Cloud: Development of high-performance microservices and APIs using Django and FastAPI on Google Cloud Platform.",
     develop: [
-      ".Net Core",
-      "SqlServer",
-      "Entity Framework",
-      "SignalR",
-      "React",
-      "Tailwind",
+      "Django",
+      "FastAPI",
+      "n8n",
+      "GCP",
+      "Python",
+      "Vue.js",
     ],
   },
   {
     id: 2,
     color: "red-accent-4",
-    background: "#121212",
-    icon: "",
-    date: "03/2023 - 07/2023",
-    title: "Backend Developer - Informage Studios",
+    date: "02/2024 – 03/2025",
+    title: "FullStack Developer - Tecopos",
     description:
-      "As a backend developer, I participated in the implementation and update of application modules under the guidance of a senior team. I was responsible for identifying and resolving critical issues, improving the overall quality of the system, and supporting the integration of new features through effective communication with all involved parties.",
+      "Distributed Systems: Designed microservices-based solutions using NestJS, Kafka, and Nats, ensuring robust asynchronous communication between modules. Initial Technical Leadership: Conducted critical requirements analysis directly with clients and generated structural technical documentation for engineering teams.",
     develop: [
-      "NestJs",
+      "NestJS",
+      "PostgreSQL",
+      "Kafka",
+      "Nats",
       "Docker",
-      "MongoDB",
-      "Socket.io",
-      "Hexagonal Arquitecture",
+      "Microservices",
     ],
   },
   {
     id: 3,
     color: "red-accent-4",
-    background: "#121212",
-    icon: "",
-    date: "01/2024 - 11/2024",
-    title: "Full Stack Developer - Tecopos ",
+    date: "03/2022 – 09/2023",
+    title: "Backend Developer - Informage Studios",
     description:
-      " As a Full Stack developer, I was responsible for developing scalable and modular solutions based on microservices. I actively participated in requirements analysis with the client and clearly documented the developed functionalities to facilitate their maintenance and scalability. Additionally, I collaborated closely with various teams to ensure successful system integration.",
+      "Backend Service Development: Participated in the construction and maintenance of services using .NET Core and SQL Server, ensuring data integrity through Entity Framework. Real-time Interactivity: Implemented SignalR for bidirectional communication. System Robustness: Collaborated on automated testing and incident diagnosis in production, optimizing stability.",
     develop: [
-      "NestJS",
-      "PostgreSql",
-      "Prisma",
-      "Docker",
-      "Nats",
-      "Kafka",
-      "Socket.io",
-      "React",
-      "Tailwind",
-      "Redux",
+      ".Net Core",
+      "SqlServer",
+      "Entity Framework",
+      "SignalR",
+      "Unit Testing",
     ],
   },
 ];
 </script>
-<style scoped>
-.dot:hover {
-  transform: scale(1.2);
-}
-.dot {
-  cursor: pointer;
-}
-.section-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #ffffff;
-}
-.section-date {
-  font-size: 13px;
-  margin-right: 9px;
-  color: #e53935; /* un rojo más suave y profesional */
-}
-.section {
-  padding: 16px;
-}
-.section-description {
-  font-size: 15px;
-  color: #cfd8dc;
-  font-weight: 300;
 
-  line-height: 1.5;
+<style scoped lang="scss">
+.experience-timeline {
+  margin-top: 40px;
 }
 
-@media (max-width: 750px) {
-  .work {
-    margin-right: 20px;
+.experience-card {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px !important;
+  transition: all 0.3s ease;
+  margin-bottom: 24px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 60, 60, 0.3) !important;
+    transform: translateX(5px);
   }
-  .section {
+}
+
+.experience-content {
+  padding: 24px;
+}
+
+.experience-header {
+  margin-bottom: 12px;
+}
+
+.experience-date {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ff3c3c;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.experience-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.experience-description {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.experience-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 600px) {
+  .experience-content {
     padding: 16px;
   }
-  .section-title {
+  
+  .experience-title {
     font-size: 16px;
-    font-weight: 600;
-    color: #ffffff;
   }
-  .section-date {
-    font-size: 13px;
-    margin-right: 9px;
-    color: #e53935; /* un rojo más suave y profesional */
-  }
-  .section-description {
-    font-size: 15px;
-    color: #cfd8dc;
-    font-weight: 300;
-    line-height: 1.5;
-  }
-}
-
-.background-color-indigo {
-  background-color: indigo;
-}
-
-.background-color-teal {
-  background-color: teal;
-}
-
-.background-color-red-accent-4 {
-  background-color: #d32f2f; /* Puedes ajustar el valor hex si es necesario */
-}
-
-.background-color-blue {
-  background-color: blue;
-}
-
-.background-color-green {
-  background-color: green;
-}
-
-.background-color-deep-purple {
-  background-color: #673ab7;
-}
-
-.background-color-pink {
-  background-color: pink;
 }
 </style>

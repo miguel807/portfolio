@@ -91,24 +91,16 @@ const submitForm = async () => {
           <span @click="scrollToContact"> Contact </span>
         </div>
         <div class="presentation">
-          <div>
-            <div style="display: flex; flex-direction: row; column-gap: 40px">
-              <h1 style="font-size: 36px; font-weight: bold">Hi, I'm Migue</h1>
+          <div class="hero-content">
+            <div class="hero-top">
+              <h1 class="hero-name">Hi, I'm Migue</h1>
               <div class="box">Available to work</div>
-              <br />
             </div>
-            <div style="margin-top: 20px">
-              <h4 style="font-size: 24px; margin-top: 20">
+            <div class="hero-summary">
+              <h4 class="hero-description">
                 +3 years of experience,
-                <span
-                  style="
-                    font-size: 24px;
-                    color: rgb(209, 13, 13);
-                    font-weight: bold;
-                  "
-                >
-                  Full Stack Developer.</span
-                >
+                <span class="hero-highlight">
+                  Full Stack Developer.</span>
                 Empowering ideas through innovative code.
               </h4>
             </div>
@@ -131,7 +123,7 @@ const submitForm = async () => {
 
             <v-btn class="btn">
               <a
-                href="/CV_en.pdf"
+                href="/CV_Miguel_Fernandez_Software_Engineer_EN.pdf"
                 download
                 style="text-decoration: none; color: white"
               >
@@ -143,7 +135,7 @@ const submitForm = async () => {
             ></v-btn>
             <v-btn class="btn">
               <a
-                href="/CV_es.pdf"
+                href="/CV_Miguel_Fernandez_Software_Engineer_ES.pdf"
                 download
                 style="text-decoration: none; color: white"
               >
@@ -153,6 +145,9 @@ const submitForm = async () => {
                   icon="mdi-file-document-outline"
                 ></v-icon> </a
             ></v-btn>
+          </div>
+          <div class="scroll-arrow" @click="scrollToExperience">
+            <v-icon icon="mdi-chevron-down" size="x-large"></v-icon>
           </div>
         </div>
 
@@ -258,13 +253,6 @@ const submitForm = async () => {
         </div>
       </div>
 
-      <button
-        class="btn-down"
-        :style="{ top: `${heightScreen - 20}px` }"
-        @click="scrollToExperience"
-      >
-        &UpArrow;
-      </button>
     </div>
   </v-app>
 </template>
@@ -272,9 +260,9 @@ const submitForm = async () => {
 <style scoped lang="scss">
 .container {
   margin: auto;
-  width: 39vw;
-  height: 100vh;
-  min-width: 500px;
+  width: 90%;
+  max-width: 1000px;
+  min-height: 100vh;
 }
 .nav-bar {
   margin-top: 30px;
@@ -323,32 +311,56 @@ const submitForm = async () => {
 }
 
 .presentation {
-  padding-top: 120px;
-  min-width: 500px;
+  padding-top: 15vh;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   justify-content: center;
-  width: 80%;
-  margin: auto;
-  padding-left: 45px;
-  height: 400px;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 85vh;
+  position: relative;
 }
-.presentation > h1 {
-  color: beige;
-  font-size: 44px;
-  font-weight: bold;
+
+.hero-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+  margin-bottom: 20px;
 }
-.presentation > h4 {
-  color: rgb(245, 245, 208);
-  font-size: 23px;
-  margin-top: 13px;
+
+.hero-name {
+  font-size: clamp(36px, 5vw, 56px) !important;
   font-weight: bold;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.hero-highlight {
+  color: #ff3c3c;
+  font-weight: 800;
+  background: linear-gradient(90deg, #ff3c3c, #ff8a8a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(20px, 3vw, 24px) !important;
+  line-height: 1.4;
+  font-weight: 400;
 }
 .btn-section {
   width: max-content;
-  align-items: start;
-  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  flex-wrap: wrap;
   margin-top: 10px;
 }
 .btn {
@@ -366,51 +378,35 @@ const submitForm = async () => {
   transform: scale(1.03);
 }
 
-@keyframes bounce {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes moveRigth {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(-8px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.btn-down {
-  color: rgb(236, 236, 236);
+.scroll-arrow {
   position: absolute;
-  bottom: 4%;
-  rotate: 180deg;
-  background-color: transparent;
-  border: none;
-  font-size: 30px;
-  animation: bounce 1.5s infinite;
+  bottom: 30px;
   left: 50%;
-  cursor: pointer;
   transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  animation: bounce 2s infinite;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #ff3c3c;
+  }
 }
 
-@keyframes slideInFromLeft {
-  0% {
-    transform: translateX(-100%);
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
   }
-  100% {
-    transform: translateX(0);
+  40% {
+    transform: translateX(-50%) translateY(-10px);
   }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+.experienceElement {
+  animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
 .experienceElement {

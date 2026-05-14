@@ -1,46 +1,38 @@
 <template>
-    <v-carousel
-      
-      style="border-radius: 12px;"
-      progress="primary"
-      hide-delimiters
-      
+  <v-carousel
+    style="border-radius: 12px;"
+    progress="red"
+    hide-delimiters
+    height="70vh"
+  >
+    <v-carousel-item
+      v-for="(photo, i) in props.photos"
+      :key="i"
     >
-      <v-carousel-item
-        v-for="(photo, i) in props.photos"
-        :key="i"
-      >
-        <v-sheet
-          style="height: max-content;width: max-content;border-radius: 12px;"
+      <div class="d-flex fill-height justify-center align-center carousel-item-container">
+        <v-img
+          :src="photo"
+          class="imgCarousel"
+          max-height="100%"
+          max-width="100%"
+          contain
         >
-          <div class="d-flex fill-height justify-center align-center">
-            <div class="text-h2" style="background-color: #02040e;border-radius: 12px;" >   
-            <v-img
-                class="imgCarousel"
-                :src="photo"
-            >
-            <template v-slot:placeholder>
-              <v-row
-                align="center"
-                class="fill-height ma-0"
-                justify="center"
-              >
-                <v-progress-circular
-                  color="grey-lighten-5"
-                  indeterminate
-                ></v-progress-circular>
-              </v-row>
-        </template>
-          </v-img>
-            </div>
-          </div>
-        </v-sheet>
-      </v-carousel-item>
-    </v-carousel>
-  </template>
+          <template v-slot:placeholder>
+            <v-row align="center" class="fill-height ma-0" justify="center">
+              <v-progress-circular
+                color="red"
+                indeterminate
+              ></v-progress-circular>
+            </v-row>
+          </template>
+        </v-img>
+      </div>
+    </v-carousel-item>
+  </v-carousel>
+</template>
 
 <script lang="ts" setup>
-import {ref,defineProps} from 'vue'
+import { defineProps } from 'vue'
 
 const props = defineProps({
   photos: {
@@ -48,25 +40,16 @@ const props = defineProps({
     required: true
   }
 })
-
-
 </script>
-<style scoped> 
 
-.imgCarousel{
-
-  object-fit: scale-down;
-  background-color: #02040e;
-  width: 700px;
-  height: 600px;
+<style scoped>
+.carousel-item-container {
+  background-color: transparent;
+  padding: 0;
 }
 
-@media (max-width: 750px) {
-.imgCarousel{
-  width: 300px;
-  height: 250px;
-  object-fit: contain;  
-
-}
+.imgCarousel {
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 </style>

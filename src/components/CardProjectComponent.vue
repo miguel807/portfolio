@@ -1,212 +1,71 @@
 <template>
-  <v-timeline align="start" class="show-on-small">
-    <v-timeline-item
-      v-for="item in items"
-      :key="item"
-      :dot-color="item.color"
-      fill-dot
-    >
-      <v-dialog v-model="dialog" width="auto" style="background-color: #02040e">
-        <CarouselComponent :photos="currentPhotos" />
-      </v-dialog>
-      <template v-slot:opposite>
-        <v-card :color="item.color" style="margin-bottom: 100px">
-          <v-img
-            height="200px"
-            :src="item.img[0]"
-            style="width: 300px; border-radius: 12px; cursor: pointer"
-            cover
-            @click="openDialog(item.img)"
-          >
-            <div class="inside-picture">
-              <span
-                >See more <v-icon icon="mdi-eye" size="x-small"></v-icon
-              ></span>
-            </div>
-            <template v-slot:placeholder>
-              <v-row align="center" class="fill-height ma-0" justify="center">
-                <v-progress-circular
-                  color="grey-lighten-5"
-                  indeterminate
-                ></v-progress-circular>
-              </v-row>
-            </template>
-          </v-img>
-        </v-card>
-      </template>
-      <div>
-        <v-alert class="text-h6 title" :color="item.color"
-          >{{ item.title }}
-          <a
-            v-bind:href="item.link"
-            target="_blank"
-            style="text-decoration: none"
-          >
-            <v-icon
-              style="color: white; font-size: 20px; cursor: pointer"
-              icon="mdi-github"
-              end
-            ></v-icon></a
-        ></v-alert>
-        <p class="description">
-          {{ item.description }}
-        </p>
-        <br />
-        <div
-          style="
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: start;
-            margin-left: 10px;
-          "
-        >
-          <em
-            v-for="(dev, index) in item.develop"
-            :key="dev"
-            :class="`develop text-${colors[index]}`"
-          >
-            {{ dev }}
-          </em>
-        </div>
-        <br />
-      </div>
-    </v-timeline-item>
-    <v-timeline-item fill-dot>
-      <template v-slot:opposite>
-        <h1 style="color: white; margin: auto">
-          And more...
-          <a
-            href="https://github.com/miguel807/"
-            target="_blank"
-            style="text-decoration: none"
-          >
-            <v-icon
-              style="color: white; font-size: 30px; cursor: pointer"
-              icon="mdi-github"
-              end
-            ></v-icon>
-          </a>
-        </h1>
-      </template>
-    </v-timeline-item>
-  </v-timeline>
-
-  <!--esto es en el responsive-->
-
-  <v-timeline side="end" class="hide-on-small" style="margin-right: 20px">
-    <v-timeline-item
-      v-for="item in items"
-      :key="item"
-      :dot-color="item.color"
-      fill-dot
-      size="small"
-    >
-      <v-alert color="transparent" style="border-radius: 9px" :value="true">
-        <div>
-          <v-card
-            :style="{
-              'margin-bottom': '20px',
-              'background-color': 'transparent',
-              border: `1px solid ${item.colorHex}`,
-              'border-radius': '9px',
-            }"
-          >
-            <v-alert
-              class="title"
-              :color="item.color"
-              style="
-                border-radius: 9px 9px 0px 0px;
-                font-size: 25px;
-                font-family: 'Gill Sans', 'Gill Sans MT', Calibri,
-                  'Trebuchet MS', sans-serif;
-              "
-              >{{ item.title }}
-              <a
-                v-bind:href="item.link"
-                target="_blank"
-                style="text-decoration: none"
-              >
-                <v-icon
-                  style="color: white; font-size: 25px; cursor: pointer"
-                  icon="mdi-github"
-                  end
-                ></v-icon></a
-            ></v-alert>
+  <div class="projects-grid">
+    <v-row>
+      <v-col
+        v-for="(item, index) in items"
+        :key="index"
+        cols="12"
+        md="6"
+        class="project-col"
+      >
+        <v-card class="project-card" :style="{ '--accent-color': item.colorHex }">
+          <div class="card-image-container" @click="openDialog(item.img)">
             <v-img
-              height="250px"
               :src="item.img[0]"
-              style="
-                width: 100%;
-                border-radius: 0px;
-                cursor: pointer;
-                background-color: transparent;
-              "
+              height="240"
               cover
-              @click="openDialog(item.img)"
+              class="project-image"
             >
-              <div class="inside-picture">
-                <span
-                  >See more <v-icon icon="mdi-eye" size="x-small"></v-icon
-                ></span>
+              <div class="image-overlay">
+                <v-icon icon="mdi-eye" color="white" size="large"></v-icon>
+                <span>View Details</span>
               </div>
-              <template v-slot:placeholder>
-                <v-row align="center" class="fill-height ma-0" justify="center">
-                  <v-progress-circular
-                    color="grey-lighten-5"
-                    indeterminate
-                  ></v-progress-circular>
-                </v-row>
-              </template>
             </v-img>
-            <div>
-              <h3
-                class="description"
-                style="
-                  margin-top: 20px;
-                  margin-left: 15px;
-                  margin-right: 15px;
-                  font-size: 23px;
-                  text-align: center;
-                "
-              >
-                {{ item.description }}
-              </h3>
-              <br />
+          </div>
 
-              <div
-                style="
-                  width: 100%;
-                  
-                  display: flex;
-                  flex-direction: row;
-                  flex-wrap: wrap;
-                  justify-content: center;
-                  margin-left: 10px;
-                  padding: 5px;
-                  column-gap: 12px;
-                  row-gap: 4px;
-                  
-                "
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="project-title">{{ item.title }}</h3>
+              <a
+                v-if="item.link"
+                :href="item.link"
+                target="_blank"
+                class="github-link"
               >
-                <em
-                  v-for="(dev, index) in item.develop"
-                  :key="dev"
-                  :class="`develop text-${colors[index]}`"
-                  style="font-size: 14px"
-                >
-                  {{ dev }}
-                </em>
-              </div>
-
-              <br />
+                <v-icon icon="mdi-github" size="large"></v-icon>
+              </a>
             </div>
-          </v-card>
-        </div>
-      </v-alert>
-    </v-timeline-item>
-  </v-timeline>
+
+            <p class="project-description">{{ item.description }}</p>
+
+            <div class="tech-stack">
+              <span
+                v-for="(tech, tIndex) in item.develop"
+                :key="tIndex"
+                class="tech-tag"
+                :style="{ color: item.colorHex }"
+              >
+                {{ tech }}
+              </span>
+            </div>
+          </div>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <v-dialog v-model="dialog" max-width="900" class="project-dialog">
+      <v-card color="transparent" elevation="0">
+        <CarouselComponent :photos="currentPhotos" />
+      </v-card>
+    </v-dialog>
+
+    <div class="more-projects">
+      <p>Want to see more?</p>
+      <a href="https://github.com/miguel807/" target="_blank" class="github-cta">
+        Check my GitHub <v-icon icon="mdi-github" end></v-icon>
+      </a>
+    </div>
+  </div>
 </template>
 
 
@@ -287,71 +146,162 @@ const items = [
 </script>
 
 <style scoped lang="scss">
-.title {
-  font-weight: bold;
-
-  border-radius: 6px;
-  color: white;
-  padding: 6px 20px;
+.projects-grid {
+  width: 100%;
+  padding: 20px 0;
 }
 
-.description {
-  margin-top: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
-  font-size: 15px;
-  color: #cfd8dc;
-  font-weight: 300;
-  line-height: 1.5;
+.project-card {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 20px !important;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-color) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--accent-color), 0.1);
+
+    .project-image {
+      transform: scale(1.05);
+    }
+
+    .image-overlay {
+      opacity: 1;
+    }
+  }
 }
 
-.develop {
-  font-size: 14px;
-  margin-right: 10px;
+.card-image-container {
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
 }
 
-.link {
-  margin-top: 15px;
-  color: white;
-  text-decoration: none;
+.project-image {
+  transition: transform 0.6s ease;
 }
-.inside-picture {
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: transparent;
-  font-size: 20px;
-  margin: auto;
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: transparent;
-}
-.inside-picture:hover {
-  color: white;
-  background-color: #02040e8f;
-  animation: moveRigth 1s normal;
-}
-@keyframes moveRigth {
-  0% {
-    transform: translateY(-5px);
-  }
-  50% {
-    transform: translateY(5px);
-  }
-  100% {
-    transform: translateY(0px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  gap: 10px;
+
+  span {
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 }
 
-/* styles.css */
-@media (min-width: 750px) {
-  .hide-on-small {
-    display: none;
+.card-content {
+  padding: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.project-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.github-link {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #fff;
   }
 }
-@media (max-width: 750px) {
-  .show-on-small {
-    display: none;
+
+.project-description {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.tech-tag {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 100px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.more-projects {
+  margin-top: 60px;
+  text-align: center;
+  padding: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  p {
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 10px;
+  }
+}
+
+.github-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    color: #ff3c3c;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-col {
+    padding: 12px !important;
+  }
+  
+  .project-title {
+    font-size: 18px;
   }
 }
 </style>
